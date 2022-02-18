@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image-gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        .panels{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 99vw;
+            flex: 1;
+            font-size: 30px;
+            font-family: 'Akaya Telivigala', cursive;
+            background-color: black;
+        }
+        .panel{
+            display: flex;
+            background-position: center;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1 0;
+            overflow: hidden;
+            
+        }
+        .panel1{
+            background-image: url(chris-biron-JVtcrWcbj1c-unsplash.jpg);}
+        .panel2{background-image: url(redcharlie-innb1UEpVZg-unsplash.jpg);}
+        .panel3{background-image: url(https://images.unsplash.com/photo-1562569633-622303bafef5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
+            color: whitesmoke;}
+        .panel4{background-image: url(redcharlie-innb1UEpVZg-unsplash.jpg);}
+        .panel5{background-image: url(chris-biron-JVtcrWcbj1c-unsplash.jpg);}
+        .panel>*{
+            transition: all 0.5s ease-in-out;
+           
+        }
+        .panel p{
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .panel>*:first-child{
+            transform: translateY(-100%) ;
+        }
+        .panel.openActive>*:first-child{
+            transform: translateY(0%);
+        }
+        .panel>*:last-child{
+            transform: translateY(100%);
+        }
+        .panel.openActive>*:last-child{
+            transform: translateY(0%);
+        }
+        .panel.increaseWidth{
+            font-size: 60px;
+            flex:5;
+            transition: 0.25s ease-out;
+        }
+        @media (max-width:580px){
+            .panel{
+                font-size: 100%;
+            }
+            .panel.increaseWidth{
+                font-size: 180%;
+            }
+        }
+        @media (max-width:525px) {
+            .panel{
+                font-size: 60%;
+            }
+            .panel.increaseWidth{
+                font-size: 100%;
+            }
+        }
+    
+    
+    </style>
+</head>
+<body>
+    <div class="panels">
+        <div class="panel panel1">
+            <P>HEY</P>
+            <P>LETS</P>
+            <P>DANCE</P>
+        </div>
+        <div class="panel panel2">
+            <P>GIVE</P>
+            <P>TAKE</P>
+            <P>RECEIVE</P>
+        </div>
+        <div class="panel panel3">
+            <P>EXPERIENCE</P>
+            <P>IT</P>
+            <P>TODAY</P>
+        </div>
+        <div class="panel panel4">
+            <P>GIVE</P>
+            <P>ALL</P>
+            <P>YOU CAN</P>
+        </div>
+        <div class="panel panel5">
+            <P>LIFE</P>
+            <P>IN</P>
+            <P>MOTION</P>
+        </div>
+    </div>
+</body>
+<script>
+    const panels=document.querySelectorAll('.panel');
+    console.log('hello');
+    removee=(panel)=>{
+        panel.classList.remove('openActive');
+        panel.classList.remove('increaseWidth');
+    }
+    addd=(panel)=>{
+        panel.classList.add('openActive');
+        panel.classList.add('increaseWidth');
+    }
+    panels.forEach(panel=>panel.addEventListener('click',()=>{
+        if(panel.classList.contains('openActive')){
+           removee(panel);
+        }
+        else {
+            panels.forEach((panel)=>{
+                removee(panel);
+            });
+            addd(panel);
+        }
+    }))
+</script>
+</html>
